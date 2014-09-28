@@ -1,13 +1,13 @@
 var ForkList = require('../');
 var underscore = require('underscore');
 
-var num = 2;
 var module = 'child';
+var num = 2;
 var fork = new ForkList({
-    num: num,
     module: module,
-    classifier: function classify(e, done) {
-        return done(null, underscore.random(0, num - 1));
+    num: num,
+    classifier: function classify(msg, done) {
+        done(null, underscore.random(0, num - 1));
     }
 });
 

@@ -14,5 +14,8 @@
   ],
   "author": "Lellansin",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "underscore": "~1.7.0"
+  }
 }
