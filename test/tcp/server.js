@@ -6,15 +6,15 @@ var util = require('util');
 
 var PORT = 6969;
 
-var module = 'worker';
+var path = 'worker';
 var num = 5;
 
 var forklist = new ForkList({
-    module: module,
+    path: path,
     num: num,
     classifier: function classify(args, done) {
         done(null, underscore.random(0, num - 1));
-    },
+    }
 });
 
 var server = net.createServer();

@@ -1,17 +1,17 @@
 var ForkList = require('../');
 var underscore = require('underscore');
 
-var module = 'child';
+var path = 'child';
 var num = 2;
 var fork = new ForkList({
-    module: module,
+    path: path,
     num: num,
     classifier: function classify(msg, done) {
         done(null, underscore.random(0, num - 1));
     }
 });
 
-for (var i = 0; i < 10; i++) {
+for (var i = 0; i < 100; i++) {
     fork.send('"hello child"', i);
 }
 
