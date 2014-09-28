@@ -3,7 +3,7 @@ var underscore = require('underscore');
 
 var path = 'child';
 var num = 2;
-var fork = new ForkList({
+var forks = new ForkList({
     path: path,
     num: num,
     classifier: function classify(msg, done) {
@@ -12,7 +12,7 @@ var fork = new ForkList({
 });
 
 for (var i = 0; i < 100; i++) {
-    fork.send('"hello child"', i);
+    forks.send('"hello child"', i);
 }
 
-fork.close();
+forks.shutdown();
