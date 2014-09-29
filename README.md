@@ -1,8 +1,8 @@
 # Fork List [![NPM Version](https://badge.fury.io/js/forklist.svg)](http://badge.fury.io/js/forklist)
 
-## Easy to fork a list of child process
+It's easy to fork a list of child process for node.js by ForkList.
 
-Example:
+## Quick Examples
 
 ```javascript
 var ForkList = require('forklist');
@@ -17,11 +17,7 @@ var num = 3;
 var forks = new ForkList({
     path: path,
     num: num,
-    classifier: function classify(msg, done) {
-        // random select a process to send
-        var id = underscore.random(0, num - 1);
-        done(null, id);
-    }
+    classifier: 
 });
 
 for (var i = 0; i < 10; i++) {

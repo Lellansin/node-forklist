@@ -16,7 +16,9 @@
   ],
   "author": "Lellansin",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "underscore": "^1.7.0"
+  },
   "devDependencies": {
     "underscore": "~1.7.0",
     "mocha": "~1.21.4"
