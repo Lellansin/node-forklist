@@ -13,7 +13,7 @@ forks.setClassifier(function(msg, done) {
 });
 
 for (var i = 0; i < 10; i++) {
-    forks.send('"hello child"', i);
+    forks.send('new_test.js', i);
 }
 
 forks.shutdown();
