@@ -6,7 +6,6 @@ It's easy to fork a list of child process for node.js by ForkList.
 
 ```javascript
 var ForkList = require('forklist');
-var underscore = require('underscore');
 
 // which script to run by multiprocess
 var path = './script/write';
@@ -16,8 +15,7 @@ var num = 3;
 
 var forks = new ForkList({
     path: path,
-    num: num,
-    classifier: 
+    num: num
 });
 
 for (var i = 0; i < 10; i++) {
@@ -94,8 +92,16 @@ set logger
 
 ### Control
 
-* `shutdown`
 * `killByPid`
+* `shutdown`
+
+#### `#killByPid`
+
+This will forcely kill special child process, and don't care if there are some jobs haven't done.
+
+#### `#shutdown`
+
+This will forcely shutdown all child process, and don't care if there are some jobs haven't done.
 
 ### Event
 
@@ -107,7 +113,6 @@ Example:
 
 ```javascript
 var ForkList = require('forklist');
-var underscore = require('underscore');
 
 var path = './script';
 var num = 3;
@@ -115,9 +120,6 @@ var num = 3;
 var forks = new ForkList({
     path: path,
     num: num,
-    classifier: function classify(msg, done) {
-        done(null, underscore.random(0, num - 1));
-    },
     log: true
 });
 

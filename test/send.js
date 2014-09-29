@@ -17,34 +17,32 @@ describe('ForkList', function() {
     });
 
     describe('.send', function() {
-        
-        it('should send 9999 times', function(done) {
+
+        it('should send 100 times', function(done) {
             var data_file = './data/basic.js';
-            var times = 9999;
+            var times = 100;
 
             // add four var to save count
-            fs.writeFileSync(data_file, 'var work_0 = work_1 = work_2 = work_3 = work_4 = 0;\n');
+            fs.writeFileSync(data_file, 'var work_0 = work_1 = work_2 = work_3 = work_4 = 0;\n' +
+                'exports.result = function(){ return work_0 + work_1 + work_2 + work_3 + work_4; }; \n');
 
-            // send data 9999 times
+            // send data 100 times
             for (var i = 0; i < times; i++) {
                 forks.send(data_file, i);
             }
 
             forks.on('finish', function() {
 
-                // exports count
-                fs.appendFileSync(data_file, 'exports.result = work_0 + work_1 + work_2 + work_3 + work_4;');
 
                 // get the total write count of 4 processes 
-                var result = require(data_file).result;
+                var result = require(data_file).result();
 
-                console.log('times:', times);
-                console.log('result:', result);
                 assert(times === result);
                 done();
             });
 
-            // forks.shutdown();
+            // 
+            forks.shutdown();
         });
     });
 });
