@@ -1,43 +1,45 @@
-Fork List
-======================
+# Fork List
 
-Easy to fork a list of child process
-------------------------------------
+## Easy to fork a list of child process
 
 Example:
 
-    var ForkList = require('forklist');
-    var underscore = require('underscore');
+```javascript
+var ForkList = require('forklist');
+var underscore = require('underscore');
 
-    // which script to run by multiprocess
-    var path = './script/write';
+// which script to run by multiprocess
+var path = './script/write';
 
-    // child process num
-    var num = 3;
+// child process num
+var num = 3;
 
-    var forks = new ForkList({
-        path: path,
-        num: num,
-        classifier: function classify(msg, done) {
-            // random select a process to send
-            var id = underscore.random(0, num - 1);
-            done(null, id);
-        }
-    });
-
-    for (var i = 0; i < 10; i++) {
-        forks.send('hello~', i);
+var forks = new ForkList({
+    path: path,
+    num: num,
+    classifier: function classify(msg, done) {
+        // random select a process to send
+        var id = underscore.random(0, num - 1);
+        done(null, id);
     }
+});
 
-    forks.shutdown();
+for (var i = 0; i < 10; i++) {
+    forks.send('hello~', i);
+}
+
+forks.shutdown();
+```
 
 the `./script/write.js` is:
 
-    var Forks = require('forklist');
+```javascript
+var Forks = require('forklist');
 
-    Forks.proc(function(data1, data2) {
-        console.log('Work id:', this.workid, 'recv data1:', data1, 'data2:', data2);
-    });
+Forks.proc(function(data1, data2) {
+    console.log('Work id:', this.workid, 'recv data1:', data1, 'data2:', data2);
+});
+```
 
 Output:
 
@@ -52,11 +54,9 @@ Output:
     Work id: 2 recv data1: hello~ data2: 7
     Work id: 2 recv data1: hello~ data2: 8
 
-Manual
-=====================
+## Manual
 
-Init
-------------------------------------
+### Init
 
 * `new`
 * `count`
@@ -65,44 +65,43 @@ Init
 
 Example
 
-    var ForkList = require('forklist');
-    var underscore = require('underscore');
-    
-    var times = 10;
-    var forks = new ForkList();
-    
-    forks.new('./script');
-    forks.new('./script');
-    
-    forks.setClassifier(function(msg, done) {
-        var id = underscore.random(0, forks.count() - 1);
-        done(null, id);
-    });
-    
-    for (var i = 0; i < times; i++) {
-        forks.send(i, 'some msg');
-    }
-    
-    forks.shutdown();
+```javascript
+var ForkList = require('forklist');
+var underscore = require('underscore');
+
+var times = 10;
+var forks = new ForkList();
+
+forks.new('./script');
+forks.new('./script');
+
+forks.setClassifier(function(msg, done) {
+    var id = underscore.random(0, forks.count() - 1);
+    done(null, id);
+});
+
+for (var i = 0; i < times; i++) {
+    forks.send(i, 'some msg');
+}
+
+forks.shutdown();
+```
 
 set logger
 
 
 
-Transfor
-------------------------------------
+### Transfor
 
 * `send`
 * `forward`
 
-Control
-------------------------------------
+### Control
 
 * `shutdown`
 * `killByPid`
 
-Event
-------------------------------------
+### Event
 
 * `onExit`
 * `onError`
@@ -110,47 +109,50 @@ Event
 
 Example:
 
-    var ForkList = require('forklist');
-    var underscore = require('underscore');
-    
-    var path = './script';
-    var num = 3;
-    
-    var forks = new ForkList({
-        path: path,
-        num: num,
-        classifier: function classify(msg, done) {
-            done(null, underscore.random(0, num - 1));
-        },
-        log: true
-    });
-    
-    for (var i = 10; i >= 0; i--) {
-        forks.send('hello ' + i);
-    };
-    
-    forks.on('error', function(err, pid) {
-        console.log('--> Error:', err.message, 'pid:', pid);
-    });
-    
-    forks.on('exit', function(pid) {
-        console.log('--> Child process exit, pid:', pid);
-        forks.killByPid(pid);
-    });
-    
-    forks.on('finish', function() {
-        console.log('--> All of child process has exited');
-    });
-    
-    forks.shutdown();
+```javascript
+var ForkList = require('forklist');
+var underscore = require('underscore');
+
+var path = './script';
+var num = 3;
+
+var forks = new ForkList({
+    path: path,
+    num: num,
+    classifier: function classify(msg, done) {
+        done(null, underscore.random(0, num - 1));
+    },
+    log: true
+});
+
+for (var i = 10; i >= 0; i--) {
+    forks.send('hello ' + i);
+};
+
+forks.on('error', function(err, pid) {
+    console.log('--> Error:', err.message, 'pid:', pid);
+});
+
+forks.on('exit', function(pid) {
+    console.log('--> Child process exit, pid:', pid);
+    forks.killByPid(pid);
+});
+
+forks.on('finish', function() {
+    console.log('--> All of child process has exited');
+});
+
+forks.shutdown();
+```
 
 script.js
-    
-    var Forks = require('forklist');
+```javascript
+var Forks = require('forklist');
 
-    Forks.proc(function(data1, data2) {
-        console.log('Work id:', this.workid, 'recv data1:', data1);
-    });
+Forks.proc(function(data1, data2) {
+    console.log('Work id:', this.workid, 'recv data1:', data1);
+});
+```
 
 Output:
 
