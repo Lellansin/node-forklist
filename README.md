@@ -25,7 +25,7 @@ Example:
         }
     });
 
-    for (var i = 0; i < times; i++) {
+    for (var i = 0; i < 10; i++) {
         forks.send('hello~', i);
     }
 
