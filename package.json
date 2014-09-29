@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "fork"
+    "fork", "fork list", "multi fork"
   ],
   "author": "Lellansin",
   "license": "MIT",
