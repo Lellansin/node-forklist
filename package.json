@@ -1,5 +1,5 @@
 {
-  "name": "forklist",
+  "name": "fork-list",
   "version": "0.0.5",
   "description": "Easy to fork a list of child process",
   "main": "index.js",
@@ -22,5 +22,13 @@
   "devDependencies": {
     "underscore": "~1.7.0",
     "mocha": "~1.21.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Lellansin/node-forklist.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Lellansin/node-forklist/issues"
+  },
+  "homepage": "https://github.com/Lellansin/node-forklist"
 }

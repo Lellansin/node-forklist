@@ -1,11 +1,11 @@
-# Fork List [![NPM Version](https://badge.fury.io/js/forklist.svg)](http://badge.fury.io/js/forklist)
+# Fork List [![NPM Version](https://badge.fury.io/js/fork-list.svg)](http://badge.fury.io/js/fork-list)
 
 It's easy to fork a list of child process for node.js by ForkList.
 
 ## Quick Examples
 
 ```javascript
-var ForkList = require('forklist');
+var ForkList = require('fork-list');
 
 // which script to run by multiprocess
 var path = './script/write';
@@ -28,7 +28,7 @@ forks.shutdown();
 the `./script/write.js` is:
 
 ```javascript
-var Forks = require('forklist');
+var Forks = require('fork-list');
 
 Forks.proc(function(data1, data2) {
     console.log('Work id:', this.workid, 'recv data1:', data1, 'data2:', data2);
@@ -60,7 +60,7 @@ Output:
 Example
 
 ```javascript
-var ForkList = require('forklist');
+var ForkList = require('fork-list');
 var underscore = require('underscore');
 
 var times = 10;
@@ -112,7 +112,7 @@ This will forcely shutdown all child process, and don't care if there are some j
 Example:
 
 ```javascript
-var ForkList = require('forklist');
+var ForkList = require('fork-list');
 
 var path = './script';
 var num = 3;
@@ -145,7 +145,7 @@ forks.shutdown();
 
 script.js
 ```javascript
-var Forks = require('forklist');
+var Forks = require('fork-list');
 
 Forks.proc(function(data1, data2) {
     console.log('Work id:', this.workid, 'recv data1:', data1);
