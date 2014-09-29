@@ -2,7 +2,7 @@ var ForkList = require('../');
 var underscore = require('underscore');
 
 var path = 'child';
-var num = 2;
+var num = 4;
 var forks = new ForkList({
     path: path,
     num: num,
