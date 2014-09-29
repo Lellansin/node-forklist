@@ -22,7 +22,7 @@ describe('ForkList', function() {
                 log: true
             });
 
-            for (var i = 0; i < 10; i++) {
+            for (var i = 0; i < 5; i++) {
                 forks.send('hello ~', i);
             }
 
@@ -49,7 +49,7 @@ describe('ForkList', function() {
                 log: true
             });
 
-            for (var i = 0; i < 10; i++) {
+            for (var i = 0; i < 5; i++) {
                 forks.send('hello ~', i);
             }
 
@@ -83,7 +83,7 @@ describe('ForkList', function() {
                 log: true
             });
 
-            for (var i = 0; i < 10; i++) {
+            for (var i = 0; i < 5; i++) {
                 forks.send('hello ~', i);
             }
 

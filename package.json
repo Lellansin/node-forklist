@@ -1,6 +1,6 @@
 {
   "name": "forklist",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Easy to fork a list of child process",
   "main": "index.js",
   "directories": {
