@@ -52,14 +52,25 @@ Output:
     Work id: 2 recv data1: hello~ data2: 7
     Work id: 2 recv data1: hello~ data2: 8
 
+create method:
+
+* `new`
+* `count`
+* `setClassifier`
+* `setLogger`
 
 fork list method:
 
-* send
-* forward
+* `send`
+* `forward`
+
+control method:
+
+* `shutdown`
+* `killByPid`
 
 Event:
 
-* onExit
-* onError
-* onFinish
+* `onExit`
+* `onError`
+* `onFinish`
