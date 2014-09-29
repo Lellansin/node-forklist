@@ -1,4 +1,4 @@
-# Fork List
+# Fork List [![NPM Version](https://badge.fury.io/js/forklist.svg)](http://badge.fury.io/js/forklist)
 
 ## Easy to fork a list of child process
 
