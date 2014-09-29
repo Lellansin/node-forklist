@@ -10,12 +10,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "fork", "fork list", "multi fork"
+    "fork",
+    "fork list",
+    "multi fork"
   ],
   "author": "Lellansin",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "underscore": "~1.7.0"
+    "underscore": "~1.7.0",
+    "mocha": "~1.21.4"
   }
 }
