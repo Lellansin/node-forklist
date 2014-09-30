@@ -57,6 +57,22 @@ Output:
 * `setClassifier`
 * `setLogger`
 
+#### `new`
+
+fork a new process.
+
+#### `count`
+
+get total number of processes.
+
+#### `setClassifier`
+
+set special classifier.
+
+#### `setLogger`
+
+enable or disable fork-list debug log, or set your special logger such as log4js.getLogger.
+
 Example
 
 ```javascript
@@ -89,6 +105,17 @@ set logger
 
 * `send`
 * `forward`
+* `proc`
+
+#### `send`
+Master: transfor usal data.
+
+#### `forward`
+Master: transfor usal data.
+
+#### `proc`
+Subprocess: get data from master.
+
 
 ### Control
 
