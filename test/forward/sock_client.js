@@ -6,7 +6,6 @@ var client = net.connect({
     port: config.port
 });
 
-
 client.on('connect', function() {
     var str = 'hello ';
     for (var i = 0; i < 100; i++) {
