@@ -48,32 +48,48 @@ Output:
     Work id: 2 recv data1: hello~ data2: 7
     Work id: 2 recv data1: hello~ data2: 8
 
-## Manual
+## Documentation
 
 ### Init
-
 * `new`
 * `count`
 * `setClassifier`
 * `setLogger`
 
-#### `new`
+### Transfer
+* `send`
+* `forward`
+* `proc`
 
-fork a new process.
+### Control
+* `killByPid`
+* `shutdown`
 
-#### `count`
+### Event
+* `onExit`
+* `onError`
+* `onFinish`
+
+
+## Init
+
+### new(path)
+
+fork a new process with specify path.
+
+### count()
 
 get total number of processes.
 
-#### `setClassifier`
+### setClassifier(classifier)
 
 set special classifier.
 
-#### `setLogger`
+### setLogger(logger)
 
 enable or disable fork-list debug log, or set your special logger such as log4js.getLogger.
 
-Example
+### Example
 
 ```javascript
 var ForkList = require('fork-list');
@@ -97,44 +113,34 @@ for (var i = 0; i < times; i++) {
 forks.shutdown();
 ```
 
-set logger
 
+## Transfor
 
-
-### Transfor
-
-* `send`
-* `forward`
-* `proc`
-
-#### `send`
+### send
 Master: transfor usal data.
 
-#### `forward`
+### forward
 Master: transfor usal data.
 
-#### `proc`
+### proc
 Subprocess: get data from master.
 
 
-### Control
+## Control
 
-* `killByPid`
-* `shutdown`
-
-#### `#killByPid`
+### killByPid
 
 This will forcely kill special child process, and don't care if there are some jobs haven't done.
 
-#### `#shutdown`
+### shutdown
 
 This will forcely shutdown all child process, and don't care if there are some jobs haven't done.
 
-### Event
+## Event
 
-* `onExit`
-* `onError`
-* `onFinish`
+### onExit
+### onError
+### onFinish
 
 Example:
 
