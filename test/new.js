@@ -10,8 +10,6 @@ describe('ForkList', function() {
     forks.new('./script/write');
     forks.new('./script/write');
 
-    var num = forks.count();
-
     describe('.new', function() {
 
         it('should send 1000 times', function(done) {
