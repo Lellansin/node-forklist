@@ -9,11 +9,9 @@ var client = net.connect({
 client.on('connect', function() {
     var str = 'hello ';
     for (var i = 0; i < 100; i++) {
-        client.write(str + i + ' ');
+        var msg = str + i;
+        console.log(msg);
+        client.write(msg + '\0');
     }
     client.end();
-});
-
-client.on('end', function() {
-    console.log('client send over!');
 });

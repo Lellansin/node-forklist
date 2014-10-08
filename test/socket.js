@@ -1,28 +1,30 @@
 var spawn = require('child_process').spawn;
 
-var server = spawn('node', ['./sock_server'], { cwd: './forward' });
-var client = spawn('node', ['./sock_client'], { cwd: './forward' });
+var server = spawn('node', ['./sock_server'], { cwd: './forward'});
 
-server.stdout.on('data', function(data) {
-    console.log('Server stdout: ' + data);
-});
+describe('ForkList', function() {
+    describe('.forward socket', function() {
+        it('should recv 100 msg', function(done) {
+            var list = [];
 
-server.stderr.on('data', function(data) {
-    console.log('stderr: ' + data);
-});
+            server.stdout.on('data', function(msg) {
+                if (msg.toString() == 'test socket server start\n') {
+                    var client = spawn('node', ['./sock_client'], { cwd: './forward'});
+                    return;
+                }
 
-server.on('close', function(code) {
-    console.log('child process exited with code ' + code);
-});
+                var data = msg.toString().split('\0');
+                if (data[data.length - 1].length < 1) {
+                    data.pop();
+                }
 
-client.stdout.on('data', function(data) {
-    console.log('Client stdout: ' + data);
-});
+                list = list.concat(data);
 
-client.stderr.on('data', function(data) {
-    console.log('stderr: ' + data);
-});
-
-client.on('close', function(code) {
-    console.log('child process exited with code ' + code);
+                if (list.length > 99) {
+                    server.kill();
+                    done();
+                }
+            });
+        });
+    });
 });
