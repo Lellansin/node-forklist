@@ -117,10 +117,10 @@ forks.shutdown();
 ## Transfor
 
 ### send
-Master: transfor usal data.
+Master: transfor usual data.
 
 ### forward
-Master: transfor usal data.
+Master: transfor `Handle object`, include server object and socket object.
 
 ### proc
 Subprocess: get data from master.
