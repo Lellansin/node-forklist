@@ -155,7 +155,7 @@ console.log('test socket server start');
 ```
 `worker.js`
 ```javascript
-var ForkList = require('../../');
+var ForkList = require('fork-list');
 
 ForkList.proc(function(sock) {
     var workid = this.workid;
