@@ -1,7 +1,6 @@
 var net = require('net');
 var config = require('./sock_config');
 var ForkList = require("../../");
-var underscore = require('underscore');
 
 var num = 2;
 var path = './sock_worker';

@@ -122,9 +122,74 @@ Master: transfor usual data.
 ### forward
 Master: transfor `Handle object`, include server object and socket object.
 
+#### Socket forward exmaple
+
+`server.js`
+```javascript
+var net = require('net');
+var config = require('./my_config');
+var ForkList = require("fork-list");
+
+var num = 2;
+var path = './worker';
+
+var wokers = new ForkList({
+    path: path,
+    num: num
+});
+
+var server = net.createServer();
+
+server.on('connection', function(sock) {
+
+    wokers.foward('socket', sock);
+
+    sock.on('error', function(e) {
+        console.log('[server] Error:', e);
+    });
+});
+
+server.listen(config.port);
+
+console.log('test socket server start');
+```
+`worker.js`
+```javascript
+var ForkList = require('../../');
+
+ForkList.proc(function(sock) {
+    var workid = this.workid;
+    sock.on('data', function(data) {
+        console.log('[worker] id:', workid, 'data:', data.toString());
+    })
+});
+```
+test `client.js`
+```javascript
+var config = require('./my_config');
+var net = require('net');
+
+var client = net.connect({
+    hostname: config.host,
+    port: config.port
+});
+
+client.on('connect', function() {
+    var str = 'hello ';
+    for (var i = 0; i < 100; i++) {
+        client.write(str + i + ' ');
+    }
+    client.end();
+});
+
+client.on('end', function() {
+    console.log('client send over!');
+});
+````
+
+
 ### proc
 Subprocess: get data from master.
-
 
 ## Control
 
