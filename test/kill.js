@@ -10,11 +10,9 @@ describe('ForkList', function() {
         it('should trigger onError event', function(done) {
 
             var path = './script/read';
-            var num = 4;
-
             var forks = new ForkList({
                 path: path,
-                num: num
+                num: 1
             });
 
             forks.on('error', function(err, pid) {
@@ -31,11 +29,9 @@ describe('ForkList', function() {
         it('should invoke callback', function(done) {
 
             var path = './script/read';
-            var num = 4;
-
             var forks = new ForkList({
                 path: path,
-                num: num
+                num: 1
             });
 
             forks.kill(0);

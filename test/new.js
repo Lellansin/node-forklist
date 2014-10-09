@@ -12,14 +12,14 @@ describe('ForkList', function() {
 
     describe('.new', function() {
 
-        it('should send 1000 times', function(done) {
+        it('should send 100 times', function(done) {
             var data_file = './data/new.js';
-            var times = 1000;
+            var times = 100;
 
             // add two var to save count
             fs.writeFileSync(data_file, 'var work_0 = work_1 = 0;\n');
 
-            // send data 1000 times
+            // send data 100 times
             for (var i = 0; i < times; i++) {
                 forks.send(data_file, i);
             }

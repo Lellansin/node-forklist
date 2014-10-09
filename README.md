@@ -50,7 +50,7 @@ Output:
 
 ## Documentation
 
-### Init
+### Initialization
 * `new`
 * `count`
 * `setClassifier`
@@ -71,7 +71,7 @@ Output:
 * `onFinish`
 
 
-## Init
+## Initialization
 
 ### new(path)
 
