@@ -2,6 +2,10 @@
 
 It's easy to fork a list of child process for node.js by ForkList.
 
+## Install
+
+`npm install fork-list`
+
 ## Quick Examples
 
 ```javascript
@@ -151,7 +155,7 @@ The usual data include:
 * JSON
 * Object*
 
-`Caution` The Object data wouldn't complete delivery:
+*Caution* The Object data wouldn't complete delivery:
 
 ```javascript
 var forks = new ForkList({
@@ -168,10 +172,10 @@ test.prototype.hi = function() {
 
 for (var i = 0; i < times; i++) {
     var t = new test('Alan' + i);
-    // you can only get { name: 'AlanX' }, the prototype will lost
     forks.send(i, t);
 }
 ```
+you can only get the basic data `{ name: 'AlanX' }`, and the prototype will lost, you can't call `.hi` in the child process.
 
 
 <a name="forward" />
@@ -346,6 +350,14 @@ Output:
     --> Child process exit, pid: 4900
     --> Error: IPC channel is already disconnected pid: 4900
     --> All of child process has exited
+
+## Test
+
+you can test this module by:
+```shell
+cd node_modules/fork-list
+npm test
+```
 
 ## license
 
