@@ -51,40 +51,45 @@ Output:
 ## Documentation
 
 ### Initialization
-* `new`
-* `count`
-* `setClassifier`
-* `setLogger`
+* [`new`](#new)
+* [`count`](#count)
+* [`setClassifier`](#setClassifier)
+* [`setLogger`](#setLogger)
 
 ### Transfer
-* `send`
-* `forward`
-* `proc`
+* [`send`](#send)
+* [`forward`](#forward)
+* [`proc`](#proc)
 
 ### Control
-* `killByPid`
-* `shutdown`
+* [`kill`](#kill)
+* [`killByPid`](#killByPid)
+* [`shutdown`](#shutdown)
 
 ### Event
-* `onExit`
-* `onError`
-* `onFinish`
+* [`onExit`](#onExit)
+* [`onError`](#onError)
+* [`onFinish`](#onFinish)
 
-
+<a name="Initialization" />
 ## Initialization
 
+<a name="new" />
 ### new(path)
 
 fork a new process with specify path.
 
+<a name="count" />
 ### count()
 
 get total number of processes.
 
+<a name="setClassifier" />
 ### setClassifier(classifier)
 
 set special classifier.
 
+<a name="setLogger" />
 ### setLogger(logger)
 
 enable or disable fork-list debug log, or set your special logger such as log4js.getLogger.
@@ -114,12 +119,15 @@ forks.shutdown();
 ```
 
 
+<a name="Transfor" />
 ## Transfor
 
-### send
+<a name="send" />
+### send(msg, ..., cb)
 Master: transfor usual data.
 
-### forward
+<a name="forward" />
+### forward(type, handleObject, ..., cb)
 Master: transfor `Handle object`, include server object and socket object.
 
 #### Socket forward exmaple
@@ -188,23 +196,36 @@ client.on('end', function() {
 ````
 
 
-### proc
+<a name="proc" />
+### proc(cb)
 Subprocess: get data from master.
 
+<a name="Control" />
 ## Control
 
-### killByPid
+<a name="kill" />
+### kill(workid)
 
 This will forcely kill special child process, and don't care if there are some jobs haven't done.
 
-### shutdown
+<a name="killByPid" />
+### killByPid(pid)
 
-This will forcely shutdown all child process, and don't care if there are some jobs haven't done.
+This will forcely kill special child process, and don't care if there are some jobs haven't done.
 
+<a name="shutdown" />
+### shutdown()
+
+This will forcely shutdown all child process, and don't care if there are some jobs haven't done. and once all of child process has exited, the `finish` event will emit.
+
+<a name="Event" />
 ## Event
 
+<a name="onExit" />
 ### onExit
+<a name="onError" />
 ### onError
+<a name="onFinish" />
 ### onFinish
 
 Example:
@@ -270,3 +291,7 @@ Output:
     --> Child process exit, pid: 4900
     --> Error: IPC channel is already disconnected pid: 4900
     --> All of child process has exited
+
+## license
+
+MIT
