@@ -1,4 +1,5 @@
+var forkList = require('../../');
 
-process.stdin.on('data', function(data) {
-	console.log('son data:', data.toString(),'\n');
+forkList.proc(function(data1) {
+    console.log('This is work:', this.workid, 'recv data1:', data1);
 });

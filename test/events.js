@@ -16,9 +16,6 @@ describe('ForkList', function() {
             var forks = new ForkList({
                 path: path,
                 num: num,
-                classifier: function classify(msg, done) {
-                    done(null, underscore.random(0, num - 1));
-                },
                 log: true
             });
 
@@ -43,15 +40,8 @@ describe('ForkList', function() {
             var forks = new ForkList({
                 path: path,
                 num: num,
-                classifier: function classify(msg, done) {
-                    done(null, underscore.random(0, num - 1));
-                },
                 log: true
             });
-
-            for (var i = 0; i < 5; i++) {
-                forks.send('hello ~', i);
-            }
 
             /*
              * Emitted when:
@@ -63,9 +53,8 @@ describe('ForkList', function() {
                 done();
             });
 
-            forks.on('exit', function(pid) {
-                forks.killByPid(pid);
-            });
+            forks.kill(0);
+            forks.send('some message');
 
             forks.shutdown();
         });
@@ -77,9 +66,6 @@ describe('ForkList', function() {
             var forks = new ForkList({
                 path: path,
                 num: num,
-                classifier: function classify(msg, done) {
-                    done(null, underscore.random(0, num - 1));
-                },
                 log: true
             });
 
