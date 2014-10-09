@@ -1,4 +1,4 @@
-# Fork List [![NPM Version](https://badge.fury.io/js/fork-list.svg)](http://badge.fury.io/js/fork-list)
+# Fork List [![NPM Version](https://badge.fury.io/js/fork-list.svg)](http://badge.fury.io/js/fork-list) [![Build Status](https://travis-ci.org/Lellansin/node-forklist.png?branch=master)](https://travis-ci.org/Lellansin/node-forklist)
 
 It's easy to fork a list of child process for node.js by ForkList.
 
