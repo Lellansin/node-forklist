@@ -3,7 +3,7 @@ var Path = require('path');
 var underscore = require('underscore');
 var ForkList = require('../');
 
-var forks;
+var path = './script/basic';
 
 describe('ForkList', function() {
 
@@ -11,17 +11,11 @@ describe('ForkList', function() {
 
         it('should trigger onExit event', function(done) {
 
-            var path = './script/basic';
             var num = 1;
             var forks = new ForkList({
                 path: path,
-                num: num,
-                log: true
+                num: num
             });
-
-            for (var i = 0; i < 5; i++) {
-                forks.send('hello ~', i);
-            }
 
             /*
              * Emitted after the child process ends
@@ -35,12 +29,10 @@ describe('ForkList', function() {
 
         it('should trigger onError event', function(done) {
 
-            var path = './script/basic';
             var num = 1;
             var forks = new ForkList({
                 path: path,
-                num: num,
-                log: true
+                num: num
             });
 
             /*
@@ -61,17 +53,11 @@ describe('ForkList', function() {
 
 
         it('should trigger onFinish event', function(done) {
-            var path = './script/basic';
             var num = 1;
             var forks = new ForkList({
                 path: path,
-                num: num,
-                log: true
+                num: num
             });
-
-            for (var i = 0; i < 5; i++) {
-                forks.send('hello ~', i);
-            }
 
             /*
              * Emitted after the all child process ends

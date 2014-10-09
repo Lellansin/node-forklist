@@ -4,7 +4,7 @@ var server = spawn('node', ['./sock_server'], { cwd: './forward'});
 
 describe('ForkList', function() {
     describe('.forward socket', function() {
-        it('should recv 100 msg', function(done) {
+        it('should recv 1000 msg', function(done) {
             var list = [];
 
             server.stdout.on('data', function(msg) {
@@ -20,7 +20,7 @@ describe('ForkList', function() {
 
                 list = list.concat(data);
 
-                if (list.length > 99) {
+                if (list.length > 999) {
                     server.kill();
                     done();
                 }

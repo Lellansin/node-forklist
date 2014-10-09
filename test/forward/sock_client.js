@@ -8,7 +8,7 @@ var client = net.connect({
 
 client.on('connect', function() {
     var str = 'hello ';
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < 1000; i++) {
         var msg = str + i;
         console.log(msg);
         client.write(msg + '\0');

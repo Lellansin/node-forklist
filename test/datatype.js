@@ -3,20 +3,22 @@ var Path = require('path');
 var assert = require('assert');
 var ForkList = require('../');
 
+// which script to run by multiprocess
+var path = './script/basic';
+
+var times = 100;
+
 describe('ForkList', function() {
 
     describe('.send', function() {
-        // which script to run by multiprocess
-        var path = './script/basic';
+        var forks = new ForkList({
+            path: path
+        });
 
-        it('should send Number and String', function(done) {
-            var times = 100;
-            var forks = new ForkList({
-                path: path
-            });
+        it('Number and String', function(done) {
 
             for (var i = 0; i < times; i++) {
-                forks.send(i, 'hello');
+                forks.send(i, 'hello world');
             }
 
             forks.on('finish', function() {
@@ -25,12 +27,33 @@ describe('ForkList', function() {
 
             forks.shutdown();
         });
+    });
 
-        it('should send Array data', function(done) {
-            var times = 100;
-            var forks = new ForkList({
-                path: path
+    describe('.send', function() {
+        var forks = new ForkList({
+            path: path
+        });
+
+        it('Number and String', function(done) {
+
+            for (var i = 0; i < times; i++) {
+                forks.send(i, 'hello world');
+            }
+
+            forks.on('finish', function() {
+                done();
             });
+
+            forks.shutdown();
+        });
+    });
+
+    describe('.send', function() {
+        var forks = new ForkList({
+            path: path
+        });
+
+        it('Array data', function(done) {
 
             for (var i = 0; i < times; i++) {
                 forks.send(i, [i, i + 1]);
@@ -42,12 +65,14 @@ describe('ForkList', function() {
 
             forks.shutdown();
         });
+    });
 
-        it('should send JSON data', function(done) {
-            var times = 100;
-            var forks = new ForkList({
-                path: path
-            });
+    describe('.send', function() {
+        var forks = new ForkList({
+            path: path
+        });
+
+        it('JSON data', function(done) {
 
             for (var i = 0; i < times; i++) {
                 forks.send(i, {
@@ -61,9 +86,10 @@ describe('ForkList', function() {
 
             forks.shutdown();
         });
+    });
 
-        it('should send Function data but wouldn\'t work', function(done) {
-            var times = 10;
+    describe('.send', function() {
+        it('Function data but wouldn\'t work', function(done) {
             var forks = new ForkList({
                 path: path
             });
@@ -83,9 +109,10 @@ describe('ForkList', function() {
 
             forks.shutdown();
         });
+    });
 
+    describe('.send', function() {
         it('can send part of Object data', function(done) {
-            var times = 10;
             var forks = new ForkList({
                 path: path
             });

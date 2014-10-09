@@ -193,7 +193,7 @@ var ForkList = require("fork-list");
 var num = 2;
 var path = './worker';
 
-var wokers = new ForkList({
+var workers = new ForkList({
     path: path,
     num: num
 });
@@ -202,7 +202,7 @@ var server = net.createServer();
 
 server.on('connection', function(sock) {
 
-    wokers.foward('socket', sock);
+    workers.foward('socket', sock);
 
     sock.on('error', function(e) {
         console.log('[server] Error:', e);
@@ -221,7 +221,7 @@ ForkList.proc(function(sock) {
     var workid = this.workid;
     sock.on('data', function(data) {
         console.log('[worker] id:', workid, 'data:', data.toString());
-    })
+    });
 });
 ```
 test `client.js`
