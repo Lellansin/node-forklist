@@ -126,6 +126,54 @@ forks.shutdown();
 ### send(msg, ..., cb)
 Master: transfor usual data.
 
+```javascript
+var forkList = require('fork-list');
+
+// which script to run by multiprocess
+var path = './test';
+
+// child process num
+var num = 2;
+
+var forks = new ForkList({
+    path: path,
+    num: num
+});
+
+// send data to child process
+forks.send(somedata, ...);
+```
+The usual data include:
+
+* Number
+* String
+* Array
+* JSON
+* Object*
+
+`Caution` The Object data wouldn't complete delivery:
+
+```javascript
+var forks = new ForkList({
+    path: path
+});
+
+function test(name) {
+    this.name = name || 'default';
+}
+
+test.prototype.hi = function() {
+    console.log('my name is ', this.name);
+};
+
+for (var i = 0; i < times; i++) {
+    var t = new test('Alan' + i);
+    // you can only get { name: 'AlanX' }, the prototype will lost
+    forks.send(i, t);
+}
+```
+
+
 <a name="forward" />
 ### forward(type, handleObject, ..., cb)
 Master: transfor `Handle object`, include server object and socket object.
@@ -195,10 +243,17 @@ client.on('end', function() {
 });
 ````
 
-
 <a name="proc" />
 ### proc(cb)
 Subprocess: get data from master.
+
+```javascript
+var forkList = require('fork-list');
+
+forkList.proc(function(msg, ...) {
+    /* code */
+});
+```
 
 <a name="Control" />
 ## Control
